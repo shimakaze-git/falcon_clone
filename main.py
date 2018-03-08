@@ -1,12 +1,18 @@
 import json
 import falcon
+import hooks
 
+@falcon.before(hooks.before_resource)
+@falcon.after(hooks.after_resource)
 class AppResource(object):
     
     def on_get(self, req, resp):
         
+        params = req.params
+        
         msg = {
-            "message": "Welcome to the Falcon"
+            "message": "Welcome to the Falcon",
+            "params": params
         }
         resp.body = json.dumps(msg)
 
