@@ -51,6 +51,10 @@ class AuthMiddleware(object):
     def process_request(self, req, resp):
         print('process_request\n')
         print(req)
+        # print(dir(req))
+        print(req.headers)
+        print(req.get_header)
+        print(dir(req.get_header))
         print(resp)
         
         token = req.get_header('Authorization')
@@ -71,8 +75,6 @@ class AuthMiddleware(object):
                                           href='http://docs.example.com/auth')
 
         if not self._token_is_valid(token, account_id):
-            print(token)
-            print(account_id)
             description = ('The provided auth token is not valid. '
                            'Please request a new token and try again.')
 
@@ -82,8 +84,8 @@ class AuthMiddleware(object):
                                           href='http://docs.example.com/auth')
 
     def _token_is_valid(self, token, account_id):
-        # return True  # Suuuuuure it's valid...
-        return False  # Suuuuuure it's valid...
+        return True  # Suuuuuure it's valid...
+        # return False  # Suuuuuure it's valid...
 
 
 class RequireJSON(object):
@@ -227,5 +229,7 @@ app.add_sink(sink, r'/search/(?P<engine>ddg|y)\Z')
 # auto-restart workers when it detects a code change, and it also works
 # with pdb.
 if __name__ == '__main__':
-    httpd = simple_server.make_server('127.0.0.1', 8000, app)
+    hostname = '127.0.0.1'
+    
+    httpd = simple_server.make_server(hostname, 8000, app)
     httpd.serve_forever()
