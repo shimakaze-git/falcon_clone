@@ -12,6 +12,10 @@ print(app)
 
 ## リクエスト
 
+参考URL
+- https://qiita.com/ytabuchi/items/02fa15ac209823a4d19f
+- https://qiita.com/bunty/items/758425773b2239feb9a7
+
 curl
 
 ```
