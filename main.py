@@ -1,6 +1,7 @@
 import json
 import falcon
 import hooks
+import middleware
 
 @falcon.before(hooks.before_resource)
 @falcon.after(hooks.after_resource)
@@ -16,7 +17,9 @@ class AppResource(object):
         }
         resp.body = json.dumps(msg)
 
-app = falcon.API()
+app = falcon.API(middleware=[
+    middleware.ExampleMiddleware()
+])
 app.add_route("/", AppResource())
 
 if __name__ == "__main__":
