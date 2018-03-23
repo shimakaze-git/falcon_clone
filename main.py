@@ -10,6 +10,7 @@ class AppResource(object):
     def on_get(self, req, resp):
         
         params = req.params
+        print(params)
         
         msg = {
             "message": "Welcome to the Falcon",
@@ -18,7 +19,8 @@ class AppResource(object):
         resp.body = json.dumps(msg)
 
 app = falcon.API(middleware=[
-    middleware.ExampleMiddleware()
+    middleware.ExampleMiddleware(),
+    middleware.ExampleMiddlewareTwo(),
 ])
 app.add_route("/", AppResource())
 
