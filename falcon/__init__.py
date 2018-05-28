@@ -23,7 +23,6 @@ the framework's classes, functions, and variables::
     app = falcon.API()
 
 """
-
 # Hoist classes and functions into the falcon namespace
 from falcon.version import __version__  # NOQA
 from falcon.constants import *  # NOQA

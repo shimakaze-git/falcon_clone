@@ -190,7 +190,6 @@ class API(object):
                 status and headers on a response.
 
         """
-
         req = self._request_type(env, options=self.req_options)
         resp = self._response_type(options=self.resp_options)
         resource = None
